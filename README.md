@@ -1,6 +1,18 @@
 # dogo
 Some common javascript API.
 
+## Usage
+
+- download it in `dist/` dir.
+
+- use cdn for dev:
+  
+  ```js
+  <script src="https://raw.githack.com/tatwd/dogo/master/dist/dogo.iife.js"></script>
+  ```
+
+## API
+
 - `dom(... selectors)`
   
   Get DOM object(s).
