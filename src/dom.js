@@ -4,10 +4,9 @@ export default function (... selectors) {
 
   // get dom objects
   function getDOM(selectors) {
-    return selectors.map(selector => 
-      selector.startsWith('#') 
-        ? document.querySelector(selector)
-        : document.querySelectorAll(selector));
+    return selectors.map(selector => selector.startsWith('#') 
+      ? document.querySelector(selector)
+      : document.querySelectorAll(selector));
   }
 
   // DOM Class
