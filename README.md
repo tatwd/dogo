@@ -1,4 +1,5 @@
 # dogo
+
 Some common javascript API.
 
 ## Usage
@@ -34,5 +35,8 @@ Some common javascript API.
     })
     .catch(error => console.log(error));
   ```
+## License
+
+[MIT](https://opensource.org/licenses/MIT)
 
 > Updating ...
