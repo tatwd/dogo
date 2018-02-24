@@ -2,7 +2,7 @@
   "name": "dogo.js",
   "version": "1.0.0",
   "description": "do and go in js.",
-  "main": "index.js",
+  "main": "dist/dogo.js",
   "scripts": {
     "test": "rollup -c --watch"
   },
