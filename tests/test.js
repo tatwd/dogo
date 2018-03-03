@@ -33,7 +33,7 @@
     console.log(`The type of \`${data}\` is a ${type}.`);
   });
 
-  // console.log($type.isNaN({}))
+  // console.log($type.isObject({}))
 
 
 }(dogo);

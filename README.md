@@ -29,20 +29,20 @@ Some common javascript API.
 
 ## API
 
-- `dom(... selectors)`
+- **$dom(... selectors)**
   
   Get DOM object(s).
 
   ``` js
-  let [divObj, ulObj] = dogo.dom('#div-obj', '.ul-obj').all();
+  let [divObj, ulObj] = dogo.$dom('#div-obj', '.ul-obj').all();
   ```
 
-- `ajax(url, [settings])`
+- **$ajax(url, [settings])**
 
   A common AJAX function.
 
   ``` js
-  dogo.ajax('https://api.github.com/users/1')
+  dogo.$ajax('https://api.github.com/users/1')
     .then(res => res.getJson())
     .then(data => {
       console.log(data);
@@ -50,8 +50,16 @@ Some common javascript API.
     })
     .catch(error => console.log(error));
   ```
+
+- **$type**
+
+  A type checker.
+
+  ``` js
+  dogo.$type.is('string'); // String
+
+  dogo.$type.isObject({}); // Object
+  ```
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)
-
-> Updating ...
