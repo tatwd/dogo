@@ -8,8 +8,23 @@ Some common javascript API.
 
 - use cdn for dev:
   
-  ```js
+  ```html
   <script src="https://raw.githack.com/tatwd/dogo/master/dist/dogo.iife.js"></script>
+  ```
+
+## Dev
+
+- Install Rollup CLI.
+
+  ``` bash
+  $ npm i -g rollup
+  ```
+
+- Install depandencies and run test script.
+
+  ``` bash
+  $ npm i
+  $ npm test
   ```
 
 ## API
