@@ -58,7 +58,8 @@ Some common javascript API.
   ``` js
   dogo.$type.is('string'); // String
 
-  dogo.$type.isObject({}); // Object
+  dogo.$type.isObject({}); // true
+  ...
   ```
 ## License
 
