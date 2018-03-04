@@ -27,9 +27,9 @@ Some common javascript API.
   ```html
   <script src="https://raw.githack.com/tatwd/dogo/master/dist/dogo.iife.js"></script>
   <script>
-  !function ({ $dom, $ajax, $type }) {
-    // coding ...
-  }(dogo);
+    !function ({ $dom, $ajax, $type }) {
+      // coding ...
+    }(dogo);
   </script>
   ```
 

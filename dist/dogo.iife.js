@@ -233,9 +233,9 @@ const type = function () {
   return _type;
 }();
 
-exports.dom = dom;
-exports.ajax = ajax;
-exports.type = type;
+exports.$dom = dom;
+exports.$ajax = ajax;
+exports.$type = type;
 
 return exports;
 

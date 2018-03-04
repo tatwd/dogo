@@ -230,4 +230,4 @@ const type = function () {
   return _type;
 }();
 
-export { dom, ajax, type };
+export { dom as $dom, ajax as $ajax, type as $type };
