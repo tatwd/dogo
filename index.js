@@ -1,11 +1,7 @@
-import $dom from './src/dom';
-import $ajax from './src/ajax';
-import $type from './src/type';
+import dom from './src/dom';
+import ajax from './src/ajax';
+import type from './src/type';
 
-const dogo = {
-  $dom,
-  $ajax,
-  $type
-};
+// const dogo = { $dom, $ajax, $type };
 
-export default dogo;
+export { dom, ajax, type };

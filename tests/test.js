@@ -1,10 +1,12 @@
-!function({ $dom, $ajax, $type }) {
-  
+!function(dogo) {
+
+  let [ $, $ajax, $type ] = [ dogo.dom, dogo.ajax, dogo.type ];
+
   // dom function test
-  let [header, content, foo] = $dom('#header', '.content', '.foo').at(1, 2).of(1, 1);
+  let [header, content, foo] = $('#header', '.content', '.foo').at(1, 2).of(1, 1);
   console.log(header, content, foo);
 
-  // $.dom('#header').first();
+  // $('#header').first();
   // console.log(foo);
 
   // ajax function test
