@@ -1,94 +1,83 @@
-// 类型判断
+// Type Checker
 //
+const $type = function () {
 
-const $type = function (source) {
-  
-  // common type object
-  const _TYPE_ = {
-    NUMBER:    'Number',
-    STRING:    'String',
-    OBJECT:    'Object',
-    FUNCTION:  'Function',
-    ARRAY:     'Array',
-    REGEXP:    'RegExp',
-    UNDEFINED: 'undefined',
-    NULL:      'null',
-    NAN:       'NaN'
+  const _TYPE = {
+    _NULL  :    'null',
+    _UNDEFINED: 'undfined',
+    _NAN:       'NaN',
+    _OBJECT:    'Object',
+    _NUMBER:    'Number',
+    _STRING:    'String',
+    _ARRAY:     'Array',
+    _FUNCTION:  'Function',
+    _REGEXP:    'RegExp',
+    _ERROR:     'Error'
   };
-  
-  // Type Class
-  class Type {
-    constructor () {
-    }
-  
-    // get a type string
-    is (source) {
-      if (this.isNull(source)) return _TYPE_.NULL;
-      if (this.isUndefined(source)) return _TYPE_.UNDEFINED;
-      if (this.isNumber(source)) return _TYPE_.NUMBER;
-      if (this.isNaN(source)) return _TYPE_.NAN;
-      if (this.isString(source)) return _TYPE_.STRING;
-      if (this.isArray(source)) return _TYPE_.ARRAY;
-      if (this.isObject(source)) return _TYPE_.OBJECT;
-      if (this.isFunction(source)) return _TYPE_.FUNCTION;
-      if (this.isRegExp(source)) return _TYPE_.REGEXP;
-    }
-  
-    // check for null
-    isNull (source) {
-      // null is a objec but not instanced of Object  
-      return typeof source === 'object' && !(source instanceof Object);
-    }
-  
-    // check for undefined
-    isUndefined (source) {
-      return typeof source === 'undefined';
-    }
 
-    // check for Number
-    isNumber (source) {
-      return typeof source === 'number' && !Number.isNaN(source);
-    }
+  // let class2type = {}, toString = class2type.toString;
   
-    // check for NaN
-    isNaN (source) {
-      return source !== source; // or Number.isNaN(source)
-    }
+  // class to type excludes `NaN`
+  function type (obj) {
+    return obj == null
+      ? String(obj)
+      : (toString.call(obj)).split(' ')[1].replace(']', '') || _TYPE._OBJECT;
+      // : class2type[toString.call(obj)] || _TYPE._OBJECT;
+  }
+  
+  type.isNull = function (obj) { return obj === null;}
 
-    // check for String
-    isString (source) {
-      return typeof source === 'string';
-    }
-  
-    // check for Function
-    isFunction (source) {
-      return typeof source === 'function';
-    }
-  
-    // check for RegExp
-    isRegExp (source) {
-      return source 
-        ? source.constructor === RegExp
-        : false;
-    }
-  
-    // check for Array
-    isArray (source) {
-      return Array.isArray(source);
-    }
+  type.isUndefined = function (obj) { return obj === undefined }
 
-    // check for Object
-    isObject (source) {
-      return source 
-        ? ( !this.isArray(source)
-          && !this.isRegExp(source)
-          && typeof source === 'object') 
-        : false;
-    }
-  
+  // true if obj is `null` or `undefined`
+  type.isNone = function (obj) { return obj == null }
+
+  type.isNaN = Number.isNaN || function (obj) { return obj != obj }
+
+  type.isNumber = function (obj) {
+    return typeof obj === 'number' &&  obj === obj; // !Number.isNaN(source);
   }
 
-  return new Type();
+  type.isString = function (obj) { return type(obj) == _TYPE._STRING; }
+
+  type.isArray = Array.isArray || function (obj) {
+    return obj != null && obj instanceof Array;
+  }
+
+  type.isObject = function (obj) { return type(obj) == _TYPE._OBJECT || this.isDom(obj); }
+
+  type.isWindow = function (obj) { return obj != null && obj == obj.window }
+
+  // true if `obj` is a DOM element(s)
+  type.isDom = function (obj) { 
+    return typeof HTMLElement === 'object'
+      ? obj instanceof HTMLElement
+      : obj != null && typeof obj === 'object' && obj.nodeType === 1 && typeof obj.nodeName === 'string';
+  }
+
+  // true if obj is using `{}` or `new Object()`
+  type.isPlain = function (obj) {
+    return this.isObject(obj) && !this.isWindow(obj) && Object.getPrototypeOf(obj) == Object.prototype;
+  }
+
+  // true if obj is `{}`
+  type.isEmpty = function (obj) {
+    return this.isObject(obj) && Object.keys(obj).length == 0;
+  }
+
+  type.isFunction = function (obj) { return type(obj) == _TYPE._FUNCTION; }
+
+  type.isRegExp = function (obj) { return obj instanceof RegExp; }
+
+  type.isDate = function (obj) { return obj instanceof Date; }
+
+  type.isError = function (obj) { return obj instanceof Error; }
+
+  // check for the object that likes array
+  type.likeArray = function (obj) {
+  }
+
+  return type;
 }();
 
 export default $type;

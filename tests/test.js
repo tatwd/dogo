@@ -16,7 +16,7 @@
     .catch(err => console.log(err));
 
   // test for $type
-   let datas = [
+  let datas = [
     123456,
     'this is a string',
     NaN,
@@ -26,14 +26,45 @@
     undefined,
     /RegExp/,
     function fn() {},
+    new Error(),
+    new Date(),
+    window,
+    document,
+    document.body,
+    HTMLElement,
+    HTMLHeadElement,
+    header,
+    {}
   ];
 
-  datas.forEach(data => {
-    let type = $type.is(data);
-    console.log(`The type of \`${data}\` is a ${type}.`);
+  let msgs = [];
+
+  let trueOrfalse = flag => flag ? '√': 'x';
+
+  datas.forEach((data, index) => {
+
+    msgs.push({
+      value: data,
+      type: $type(data),
+      isNull: $type.isNull(data),
+      isUndefined: $type.isUndefined(data),
+      isNone: $type.isNone(data),      
+      isNaN: $type.isNaN(data), 
+      isNumber: $type.isNumber(data),
+      isString: $type.isString(data),
+      isArray: $type.isArray(data),
+      isObject: $type.isObject(data),
+      isWindow: $type.isWindow(data),
+      isDom: $type.isDom(data),
+      isPlain: $type.isPlain(data),
+      isEmpty: $type.isEmpty(data),
+      isFunction: $type.isFunction(data),
+      isRegExp: $type.isRegExp(data), 
+      isDate: $type.isDate(data), 
+      isError: $type.isError(data)
+    })
   });
 
-  // console.log($type.isObject({}))
-
+  console.log(msgs);
 
 }(dogo);

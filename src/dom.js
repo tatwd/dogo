@@ -1,4 +1,4 @@
-// DOM 对象的获取
+// DOM Getter
 //
 export default function (... selectors) {
 

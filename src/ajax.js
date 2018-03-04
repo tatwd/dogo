@@ -1,4 +1,4 @@
-// 简单的 AJAX 函数封装
+// AJAX Encapsulation
 //
 export default function (
   url,
