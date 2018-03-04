@@ -2,16 +2,6 @@
 
 Some common javascript API.
 
-## Usage
-
-- download it in `dist/` dir.
-
-- use cdn for dev:
-  
-  ```html
-  <script src="https://raw.githack.com/tatwd/dogo/master/dist/dogo.iife.js"></script>
-  ```
-
 ## Dev
 
 - Install Rollup CLI.
@@ -27,6 +17,28 @@ Some common javascript API.
   $ npm test
   ```
 
+
+## Usage
+
+- download it in `dist/` dir.
+
+- use cdn for dev:
+
+  ```html
+  <script src="https://raw.githack.com/tatwd/dogo/master/dist/dogo.iife.js"></script>
+  <script>
+  !function ({ $dom, $ajax, $type }) {
+    // coding ...
+  }(dogo);
+  </script>
+  ```
+
+- if in node.js env
+
+  ``` js
+  import { $dom, $ajax, $type } from './dogo'
+  ```  
+
 ## API
 
 - **$dom(... selectors)**
@@ -34,7 +46,7 @@ Some common javascript API.
   Get DOM object(s).
 
   ``` js
-  let [divObj, ulObj] = dogo.$dom('#div-obj', '.ul-obj').all();
+  let [divObj, ulObj] = $dom('#div-obj', '.ul-obj').all();
   ```
 
 - **$ajax(url, [settings])**
@@ -42,10 +54,9 @@ Some common javascript API.
   A common AJAX function.
 
   ``` js
-  dogo.$ajax('https://api.github.com/users/1')
-    .then(res => res.getJson())
+  $ajax('https://api.github.com/users/1')
+    .then(res => res.getJson()) // or getText()
     .then(data => {
-      console.log(data);
       // code here ..
     })
     .catch(error => console.log(error));
@@ -56,9 +67,9 @@ Some common javascript API.
   A type checker.
 
   ``` js
-  dogo.$type.is('string'); // String
+  $type('foo'); // String
 
-  dogo.$type.isObject({}); // true
+  $type.isObject({}); // true
   ...
   ```
 ## License

@@ -153,16 +153,16 @@ function $ajax (
 const $type = function () {
 
   const _TYPE = {
-    _NULL  :    'null',
+    _NULL     : 'null',
     _UNDEFINED: 'undfined',
-    _NAN:       'NaN',
-    _OBJECT:    'Object',
-    _NUMBER:    'Number',
-    _STRING:    'String',
-    _ARRAY:     'Array',
-    _FUNCTION:  'Function',
-    _REGEXP:    'RegExp',
-    _ERROR:     'Error'
+    _NAN      : 'NaN',
+    _OBJECT   : 'Object',
+    _NUMBER   : 'Number',
+    _STRING   : 'String',
+    _ARRAY    : 'Array',
+    _FUNCTION : 'Function',
+    _REGEXP   : 'RegExp',
+    _ERROR    : 'Error'
   };
 
   // let class2type = {}, toString = class2type.toString;
