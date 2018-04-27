@@ -4,16 +4,10 @@ Some common javascript API.
 
 ## Dev
 
-- Install Rollup CLI.
-
-  ``` bash
-  $ npm i -g rollup
-  ```
-
 - Install depandencies and run test script.
 
   ``` bash
-  $ npm i
+  $ npm install
   $ npm test
   ```
 
